@@ -14,14 +14,14 @@ try {
 
     if ($localUsers.Name -notcontains "djm_LAPS"){
 
-        #Exit 1 for Intune.
-        Write-Host "Exists"
+        # Exit 1 for Intune.
+        Write-Host "Local LAPS account does not exist"
         exit 1
     }
     else {
 
-        #Exit 0 for Intune and "No_Match" for SCCM, only remediate "Match"
-        Write-Host "Not_Exists"
+        # Exit 0 for Intune
+        Write-Host "Local LAPS account exists"
         exit 0
     }
 }

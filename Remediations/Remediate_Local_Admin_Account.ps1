@@ -20,7 +20,7 @@ try {
     #Frame Random Password from given character set
     $StringSet = $CharacterSet.Uppercase + $CharacterSet.Lowercase + $CharacterSet.Numeric + $CharacterSet.SpecialChar
 
-    $password = -join (Get-Random -Count 14 -InputObject $StringSet)
+    $password = -join (Get-Random -Count 14 -InputObject $StringSet) | ConvertTo-SecureString -AsPlainText -Force
 
     # Create local user
     New-LocalUser -Name "djm_LAPS" -Password $password -Description "Local LAPS account"
@@ -38,6 +38,7 @@ try {
     else {
 
         Write-Host "Local LAPS account creation failed"
+        exit 1
     }
 }
 catch {
